@@ -1,41 +1,73 @@
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import React from 'react';
+import { StyleSheet, Button, StatusBar, View } from 'react-native';
+import {createDrawerNavigator, createAppContainer} from 'react-navigation';
+import { Icon } from 'react-native-elements'
 
 import HomeScreen from './components/HomeScreen';
 import SettingsScreen from './components/SettingsScreen';
 import ProfileScreen from './components/ProfileScreen';
 import PaymentScreen from './components/PaymentScreen';
-import ContactScreen from './components/ContactScreen';
-import DeleteCardScreen from './components/DeleteCardScreen';
 
-const MainNavigator = createStackNavigator({
-  HomeScreen: {
+class MyHomeScreen extends React.Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    drawerIcon: ({ tintColor }) => (
+      <Icon
+        name='menu'
+        color='#ff0000'
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
+    );
+  }
+}
+
+class MyProfileScreen extends React.Component {
+  static navigationOptions = {
+    drawerLabel: 'Notifications',
+    drawerIcon: ({ tintColor }) => (
+      <Icon
+        name='menu'
+        color='#ff0000'
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <View>
+        <StatusBar hidden/>
+        <Button
+          onPress={() => this.props.navigation.openDrawer()}
+          title="Go back home"
+        />
+      </View>
+    );
+  }
+}
+
+const MyDrawerNavigator = createDrawerNavigator({
+  Home: {
     screen: HomeScreen,
   },
-  SettingsScreen: {
-    screen: SettingsScreen,
-    title: "settings",
-  },
-  ProfileScreen: {
+  Profile: {
     screen: ProfileScreen,
-    title: "profile"
   },
-  PaymentScreen: {
+  Settings: {
+    screen: SettingsScreen,
+  },
+  Payments: {
     screen: PaymentScreen,
-    title: "payment information"
-  },
-  ContactScreen: {
-    screen: ContactScreen,
-    title: 'contact',
-  },
-  DeleteCardScreen: {
-    screen: DeleteCardScreen,
-    title: 'delete card screen'
   }
-},
-{
-  headerLayoutPreset: 'center',
 });
 
-const App = createAppContainer(MainNavigator);
+const MyApp = createAppContainer(MyDrawerNavigator);
 
-export default App;
+export default MyApp;

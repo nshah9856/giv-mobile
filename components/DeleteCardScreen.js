@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 class SettingsScreen extends React.Component {
     static navigationOptions = ({navigation}) => {
