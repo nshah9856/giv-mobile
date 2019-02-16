@@ -16,6 +16,7 @@ const CardComponent = props => (
                 resizeMode="cover"
                 volume={0.0}
                 style={{ width, height:500, flex:1 }}
+                isLooping
             />
             <Text>{props.title}</Text>
         </ScrollView> 
@@ -58,10 +59,13 @@ class DisplayData extends React.Component {
         //     dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
         //     activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
         // >
-        <Swiper>
+        <Swiper
+            dots={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+            dotsBottom={30}
+            dotsColorActive={"#000"}
+        >
             {
                 this.state.data.map(({title,url}) => {
-                    console.log(title)
                 return <CardComponent 
                     VideoURL={url}
                     title={<Text>{title}</Text>}
