@@ -21,6 +21,11 @@ export default class RegisterScreen extends Component {
     }
   }
 
+  accountCreated = () => {
+    Alert.alert("Success", 'Account is created!')
+    this.props.navigation.navigate("Login")
+  }
+
   submitPressed = value => {
     fetch(`https://hackuci19-231913.appspot.com/graphql?query=mutation{
         createUser(email:"${this.state.email}", password:"${this.state.password}"){
@@ -32,7 +37,7 @@ export default class RegisterScreen extends Component {
     .then(data => 
       {
         console.log(data)
-        data.data.createUser ? data.data.createUser.email && data.data.createUser.password ? this.props.navigation.navigate("Login") : Alert.alert("Error", "Please input the elements") :  Alert.alert("Error", "Please input the elements") 
+        data.data.createUser ? data.data.createUser.email && data.data.createUser.password ? this.accountCreated() : Alert.alert("Error", "Please input the elements") :  Alert.alert("Error", "Please input the elements") 
       }
     )
     .done()
