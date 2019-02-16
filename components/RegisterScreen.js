@@ -10,7 +10,7 @@ import {
   Alert
 } from 'react-native';
 
-export default class LoginView extends Component {
+export default class RegisterScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -21,24 +21,18 @@ export default class LoginView extends Component {
     }
   }
 
-  onClickListener = (viewId) => {
-    Alert.alert("Alert", "Button pressed "+viewId);
-  }
-
-  incorrectInput = () => {
-    Alert.alert("Alert", "Incorrect Email/Password has been given");
-  }
-
-  registerPressed = () => {
-    this.props.navigation.navigate("Register")
-  }
-
-  loginPressed = value => {
-    fetch(`https://hackuci19-231913.appspot.com/graphql?query={user(email: "${this.state.email}"){password}}`)
+  submitPressed = value => {
+    fetch(`https://hackuci19-231913.appspot.com/graphql?query=mutation{
+        createUser(email:"${this.state.email}", password:"${this.state.password}"){
+          email
+          password
+        }
+      }`, {method: 'POST'})
     .then(data => data.json())
     .then(data => 
       {
-        data.data.user ? data.data.user.password === this.state.password ? this.props.navigation.navigate("Home") : this.incorrectInput() :  this.incorrectInput() 
+        console.log(data)
+        data.data.createUser ? data.data.createUser.email && data.data.createUser.password ? this.props.navigation.navigate("Login") : Alert.alert("Error", "Please input the elements") :  Alert.alert("Error", "Please input the elements") 
       }
     )
     .done()
@@ -67,17 +61,10 @@ export default class LoginView extends Component {
               onChangeText={(password) => this.setState({password})}/>
         </View>
 
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.loginPressed}>
-          <Text style={styles.loginText}>Login</Text>
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.submitPressed}>
+          <Text style={styles.loginText}>Submit</Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('restore_password')}>
-            <Text>Forgot your password?</Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight style={styles.buttonContainer} onPress={this.registerPressed}>
-            <Text>Register</Text>
-        </TouchableHighlight>
       </View>
     );
   }

@@ -4,9 +4,14 @@ import HomeScreen from './components/HomeScreen';
 import SettingsScreen from './components/SettingsScreen';
 import ProfileScreen from './components/ProfileScreen';
 import PaymentScreen from './components/PaymentScreen';
+import LoginScreen from './components/LoginScreen';
+import RegisterScreen from './components/RegisterScreen';
 
 const MyDrawerNavigator = createDrawerNavigator(
   {
+    Login:{
+      screen: LoginScreen,
+    },
     Home: {
       screen: HomeScreen,
     },
@@ -18,6 +23,9 @@ const MyDrawerNavigator = createDrawerNavigator(
     },
     Payments: {
       screen: PaymentScreen,
+    },
+    Register:{
+      screen: RegisterScreen
     }
   },
   {
