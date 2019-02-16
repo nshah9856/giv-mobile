@@ -1,14 +1,15 @@
 import React from 'react'
-import { StyleSheet, View, StatusBar, Vibration, Dimensions, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, StatusBar, Vibration, Dimensions, ScrollView, Text, Image} from 'react-native';
 import { Icon, Card} from 'react-native-elements'
-import Swiper from 'react-native-swiper'
+import Swiper from 'react-native-animated-swiper'
 import {Video} from 'expo'
 
 const { width, height } = Dimensions.get('window')
 
 const CardComponent = props => (
     <Card containerStyle={{padding:0, margin: 0}} height="100%">
-        <ScrollView height="90%">
+        <ScrollView height="90%"> 
+
             <Video
                 source={{ uri: props.VideoURL }}
                 shouldPlay
@@ -53,10 +54,11 @@ class DisplayData extends React.Component {
         }
         else{
         return(
-        <Swiper           
-            dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-            activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
-        >
+        // <Swiper           
+        //     dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+        //     activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+        // >
+        <Swiper>
             {
                 this.state.data.map(({title,url}) => {
                     console.log(title)
@@ -69,6 +71,8 @@ class DisplayData extends React.Component {
                 )
             }
         </Swiper>
+
+        // </Swiper>
         )
         }
     }
