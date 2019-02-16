@@ -8,65 +8,27 @@ import SettingsScreen from './components/SettingsScreen';
 import ProfileScreen from './components/ProfileScreen';
 import PaymentScreen from './components/PaymentScreen';
 
-class MyHomeScreen extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Home',
-    drawerIcon: ({ tintColor }) => (
-      <Icon
-        name='menu'
-        color='#ff0000'
-      />
-    ),
-  };
-
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    );
-  }
-}
-
-class MyProfileScreen extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Notifications',
-    drawerIcon: ({ tintColor }) => (
-      <Icon
-        name='menu'
-        color='#ff0000'
-      />
-    ),
-  };
-
-  render() {
-    return (
-      <View>
-        <StatusBar hidden/>
-        <Button
-          onPress={() => this.props.navigation.openDrawer()}
-          title="Go back home"
-        />
-      </View>
-    );
-  }
-}
-
-const MyDrawerNavigator = createDrawerNavigator({
-  Home: {
-    screen: HomeScreen,
+const MyDrawerNavigator = createDrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Profile: {
+      screen: ProfileScreen,
+    },
+    Settings: {
+      screen: SettingsScreen,
+    },
+    Payments: {
+      screen: PaymentScreen,
+    }
   },
-  Profile: {
-    screen: ProfileScreen,
-  },
-  Settings: {
-    screen: SettingsScreen,
-  },
-  Payments: {
-    screen: PaymentScreen,
-  }
-});
+  {
+    contentOptions: {
+      activeTintColor: '#9cd585'
+    }
+  }  
+);
 
 const MyApp = createAppContainer(MyDrawerNavigator);
 

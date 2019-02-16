@@ -109,7 +109,7 @@ class HomeScreen extends React.Component {
                         <Icon
                             raised
                             name='menu'
-                            color='black'
+                            color='#9cd585'
                             style={styles.FloatingButtonStyle}
                         />
                     </TouchableOpacity>
