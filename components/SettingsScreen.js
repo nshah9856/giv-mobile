@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { Card, ListItem, Icon } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import Communications from 'react-native-communications'
 
 const buttons = [
@@ -19,12 +19,15 @@ const buttons = [
 ]
 
 class SettingsScreen extends React.Component {
-    static navigationOptions = ({navigation}) => {
-        return {
-            title: '',
-            headerBackTitle: null,
-        }
-    };
+    static navigationOptions = {
+        drawerLabel: 'settings',
+        drawerIcon: ({ tintColor }) => (
+          <Icon
+            name='settings'
+            color='black'
+          />
+        ),
+      };
 
     render() {
         return (
@@ -32,7 +35,7 @@ class SettingsScreen extends React.Component {
                 <Text
                     style={styles.item}
                     onPress={() => 
-                        this.props.navigation.navigate('PaymentScreen')
+                        this.props.navigation.navigate('Payments')
                     }
                 >
                     payment information
@@ -41,7 +44,7 @@ class SettingsScreen extends React.Component {
                 <Text
                     style={styles.item}
                     onPress={() => 
-                        this.props.navigation.navigate('HomeScreen')
+                        this.props.navigation.navigate('Home')
                     }
                 >
                     delete account

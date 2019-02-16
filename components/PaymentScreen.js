@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 class PaymentScreen extends React.Component {
     static navigationOptions = ({navigation}) => {
