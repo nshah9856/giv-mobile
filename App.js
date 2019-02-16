@@ -4,25 +4,28 @@ import HomeScreen from './components/HomeScreen';
 import SettingsScreen from './components/SettingsScreen';
 import ProfileScreen from './components/ProfileScreen';
 import PaymentScreen from './components/PaymentScreen';
-import LoginScreen from './components/LoginScreen';
 
-const MyDrawerNavigator = createDrawerNavigator({
-  Login: {
-    screen: LoginScreen,
+const MyDrawerNavigator = createDrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Profile: {
+      screen: ProfileScreen,
+    },
+    Settings: {
+      screen: SettingsScreen,
+    },
+    Payments: {
+      screen: PaymentScreen,
+    }
   },
-  Home: {
-    screen: HomeScreen,
-  },
-  Profile: {
-    screen: ProfileScreen,
-  },
-  Settings: {
-    screen: SettingsScreen,
-  },
-  Payments: {
-    screen: PaymentScreen,
-  }
-});
+  {
+    contentOptions: {
+      activeTintColor: '#9cd585'
+    }
+  }  
+);
 
 const MyApp = createAppContainer(MyDrawerNavigator);
 
