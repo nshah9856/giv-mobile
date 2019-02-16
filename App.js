@@ -1,7 +1,4 @@
-import React from 'react';
-import { StyleSheet, Button, StatusBar, View } from 'react-native';
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
-import { Icon } from 'react-native-elements'
 
 import HomeScreen from './components/HomeScreen';
 import SettingsScreen from './components/SettingsScreen';

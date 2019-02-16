@@ -7,19 +7,24 @@ import {Video} from 'expo'
 const { width, height } = Dimensions.get('window')
 
 const CardComponent = props => (
-    <Card containerStyle={{padding:0, margin: 0}} height="100%">
-        <ScrollView height="90%"> 
-
+    <View style={{padding: 25, backgroundColor:'#ffffff'}}>
+    <Card contentContainerStyle={{padding:0, margin:0}} containerStyle={{padding:0, margin: 0, borderColor:'#ffffff'}}  borderRadius={25} height="100%">
+        {/* <View style={{flex:1}}> */}
+        <ScrollView contentContainerStyle={{padding:0, margin:0}} borderRadius={25} border="0" showsVerticalScrollIndicator={false} bounces={false}> 
             <Video
                 source={{ uri: props.VideoURL }}
                 shouldPlay
                 resizeMode="cover"
                 volume={0.0}
                 style={{ width, height:500, flex:1 }}
+                isLooping
+                // borderRadius={25}
             />
             <Text style={styles.item}>{props.title}</Text>
         </ScrollView> 
+        {/* </View> */}
     </Card>
+    </View>
 )
 
 class DisplayData extends React.Component {
@@ -58,7 +63,12 @@ class DisplayData extends React.Component {
         //     dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
         //     activeDot={<View style={{backgroundColor: '#000', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
         // >
-        <Swiper>
+        <Swiper
+
+            // dots={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
+            // dotsStyle={{padding:0, border:0, margin:0}}
+            // dotsColorActive={"#000"}
+        >
             {
                 this.state.data.map(({title,url}) => {
                     console.log(title)
@@ -100,7 +110,6 @@ class HomeScreen extends React.Component {
 
                     <DisplayData />
 
-
                     <TouchableOpacity
                         activeOpacity={0.7}
                         onPress={this.clickHandler}
@@ -133,8 +142,8 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        left: 30,
-        top: 30,
+        left: 15,
+        top: 15,
     },
     FloatingButtonStyle: {
         resizeMode: 'contain',
