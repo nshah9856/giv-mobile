@@ -17,6 +17,7 @@ export default class LoginView extends Component {
     state = {
       email   : '',
       password: '',
+      isAllowed: true,
     }
   }
 
@@ -24,8 +25,24 @@ export default class LoginView extends Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
 
+  incorrectInput = () => {
+    Alert.alert("Alert", "Incorrect Email/Password has been given");
+  }
+
+  loginPressed = value => {
+    fetch(`https://hackuci19-231913.appspot.com/graphql?query={user(username: "${this.state.email}"){password}}`)
+    .then(data => data.json())
+    .then(data => 
+      {
+        data.data.user ? data.data.user.password === this.state.password ? this.props.navigation.navigate("Home") : this.incorrectInput() :  this.incorrectInput() 
+      }
+    )
+    .done()
+  }
+
   render() {
     return (
+      
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
@@ -33,7 +50,8 @@ export default class LoginView extends Component {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email})}/>
+              onChangeText={(email) => this.setState({email})}
+            />
         </View>
         
         <View style={styles.inputContainer}>
@@ -45,7 +63,7 @@ export default class LoginView extends Component {
               onChangeText={(password) => this.setState({password})}/>
         </View>
 
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('login')}>
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.loginPressed}>
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
