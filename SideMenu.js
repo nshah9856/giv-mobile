@@ -21,6 +21,12 @@ class SideMenu extends Component {
         <ScrollView>
           <View>
               <Button
+                title="home"
+                type="clear"
+                onPress={() => this.props.navigation.navigate("Home")}
+              />
+
+              <Button
                 title="profile"
                 type="clear"
                 onPress={() => this.props.navigation.navigate("Profile")}
