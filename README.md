@@ -1,5 +1,9 @@
-# sharity
+#[sharity](https://github.com/nshah9856/sharity)
 Charitable giving reimagined :)
+
+Made at HackUCI 2019:
+[Video Demo](https://www.youtube.com/watch?v=wblzFzbvgsM)
+[Devpost]("https://devpost.com/software/sharity-estm2g")
 
 
 ## Inspiration
@@ -8,7 +12,7 @@ Charitable giving reimagined :)
 >"Millennials are most likely to... **donate via mobile and watch online videos before making a gift...**
 >Only **11%** of total US giving comes from **Millennials**, even 
 >though they make up **25.9%** of the US population!"
-(src: [nonprofitssource.com](https://nonprofitssource.com/))
+([nonprofitssource.com](https://nonprofitssource.com/))
 
 >As older donors age, it is increasingly important for NPOs to 
 >encourage support in the way which younger donors understand.
@@ -57,3 +61,9 @@ packages and components caused a fair amount of conflict and delay in the progre
 - be showcased, developed, and hopefully funded in the **[2019 UCI New Venture competition](https://merage.uci.edu/research-faculty/centers/innovation-entrepreneurship/new-venture-competiton.html)**.
 - be **demoed to many donors and orgs** to gain valuable feedback on how to help their causes.
 - be made into something **donors enjoy and organizations need.**
+
+
+Created By:
+  Nisarg Shah
+  Lucas Erb
+  Haven King
