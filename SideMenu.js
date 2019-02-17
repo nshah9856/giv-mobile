@@ -48,16 +48,15 @@ class SideMenu extends Component {
           <Button
             icon={
               <Icon
-                name="person"
+                name='heartbeat'
+                type='font-awesome'
                 size={20}
                 color="black"
               />
             }
             iconLeft
-            title=" Your Donations"
+            title=" Your Favorites"
             type="clear"
-            name='heartbeat'
-            type='font-awesome'
             titleStyle={styles.button}
           />
             
