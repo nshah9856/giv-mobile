@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
       borderBottomColor: '#000000',
-      backgroundColor: '#transparent',
+      backgroundColor: 'transparent',
       borderRadius:30,
       borderBottomWidth: 1,
       width:250,
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom:20,
-    color: 'black',
+    // color: 'black',
     width:250,
     borderRadius:30,
   },
