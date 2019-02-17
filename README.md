@@ -1,4 +1,4 @@
-#[sharity](https://github.com/nshah9856/sharity)
+#sharity
 Charitable giving reimagined :)
 
 Made at HackUCI 2019:
