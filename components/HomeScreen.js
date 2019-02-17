@@ -83,6 +83,7 @@ class CardComponent extends React.Component{
                         isLooping
                     />
                     <Text style={styles.item}>{this.props.title}</Text>
+                    <Text style={styles.category}>{this.props.category}</Text>
                     <Text style={{ padding: 15, fontSize: 20, color: 'black',}}>{this.props.description}</Text>
                     <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
                         <Icon
@@ -135,7 +136,7 @@ class DisplayData extends React.Component {
     }
 
     fetchData(){
-        return fetch('https://hackuci19-231913.appspot.com/graphql?query={organizations{title url description website}}')
+        return fetch('https://hackuci19-231913.appspot.com/graphql?query={organizations{title url description website category}}')
     }
     render(){
         if (this.state.loading === true){
@@ -149,14 +150,15 @@ class DisplayData extends React.Component {
         }
         else{
         return(
-            <Swiper containerStyle={{backgroundColor:"black"}}>
+            <Swiper>
                 {
-                    this.state.data.map(({title,url, description, website}) => {
+                    this.state.data.map(({title,url, description, website, category}) => {
                     return <CardComponent 
                         VideoURL={url}
                         title={<Text style={styles.item}>{title}</Text>}
                         description={<Text>{description}</Text>}
                         website = {website}
+                        category = {category}
                         user_email = {this.props.user_email}
                         key = {1}
                     />
@@ -230,9 +232,18 @@ export default HomeScreen
 const styles = StyleSheet.create({
     item: {
         padding: 15,
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
         color: 'black',
+        fontFamily:'Helvetica'
+    },
+    category:{
+        fontSize: 18,
+        paddingLeft: 15,
+        paddingRight: 15,
+        fontWeight: '100',
+        color: 'black',
+        fontFamily:'Helvetica'
     },
     TouchableOpacityStyle: {
         position: 'absolute',
