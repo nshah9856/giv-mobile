@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     navItemStyle: {
       padding: 15,
       textAlign: 'center',
-      fontSize: 16,
+      fontSize: 18,
     },
   }
 );

@@ -218,7 +218,6 @@ class HomeScreen extends React.Component {
                             style={styles.FloatingButtonStyle}
                         />
                     </TouchableOpacity>
-
                 </View>
         );
     }
@@ -229,7 +228,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
     item: {
         padding: 15,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
     },
@@ -239,8 +238,8 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        left: 3,
-        top: 3,
+        left: 35,
+        top: 35,
     },
     TouchableOpacityStyleRight: {
         position: 'absolute',
@@ -248,8 +247,8 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        left: 3,
-        top: 80,
+        left: 95,
+        top: 35,
     },
     FloatingButtonStyle: {
         resizeMode: 'contain',

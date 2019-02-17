@@ -16,6 +16,7 @@
     "react-native-animated-swiper": "0.0.23",
     "react-native-communications": "^2.2.1",
     "react-native-elements": "^1.0.0",
+    "react-native-linear-gradient": "^2.5.3",
     "react-native-popup-dialog": "^0.17.0",
     "react-native-swiper": "^1.5.14",
     "react-navigation": "^3.2.3"

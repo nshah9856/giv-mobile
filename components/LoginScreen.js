@@ -53,14 +53,18 @@ export default class LoginView extends Component {
   }
 
   loginPressed = value => {
-    fetch(`https://hackuci19-231913.appspot.com/graphql?query={user(email: "${this.state.email}"){password}}`)
-    .then(data => data.json())
-    .then(data => 
-      {
-        data.data.user ? data.data.user.password === this.state.password ? this.loginSuccessful() : this.incorrectInput() :  this.incorrectInput() 
-      }
-    )
-    .done()
+    try {
+      fetch(`https://hackuci19-231913.appspot.com/graphql?query={user(email: "${this.state.email}"){password}}`)
+      .then(data => data.json())
+      .then(data => 
+        {
+          data.data.user ? data.data.user.password === this.state.password ? this.loginSuccessful() : this.incorrectInput() :  this.incorrectInput() 
+        }
+      )
+      .done()
+    } catch (error1) {
+      Alert.alert("Alert", "Please enter an email and password");
+    }
   }
 
   render() {
@@ -100,11 +104,11 @@ export default class LoginView extends Component {
         </TouchableHighlight>
 
         <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('restore_password')}>
-            <Text>Forgot your password?</Text>
+            <Text style={styles.loginText}>Forgot your password?</Text>
         </TouchableHighlight>
 
         <TouchableHighlight style={styles.buttonContainer} onPress={this.registerPressed}>
-            <Text>Register</Text>
+            <Text style={styles.loginText}>Register</Text>
         </TouchableHighlight>
       </View>
     );
@@ -134,6 +138,7 @@ const styles = StyleSheet.create({
       marginLeft:16,
       borderBottomColor: '#FFFFFF',
       flex:1,
+      fontSize: 18,
   },
   inputIcon:{
     width:30,
@@ -156,5 +161,6 @@ const styles = StyleSheet.create({
   },
   loginText: {
     color: 'black',
+    fontSize: 18,
   }
 });
