@@ -90,8 +90,6 @@ class HomeScreen extends React.Component {
     render() {
         return (
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <StatusBar hidden/>
-
                     <DisplayData />
 
                     <TouchableOpacity

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
+
 import {
   StyleSheet,
   Text,
@@ -33,12 +35,17 @@ export default class LoginView extends Component {
     this.props.navigation.navigate("Register")
   }
 
+  loginSuccessful = () => {
+    global.menu_available = true
+    this.props.navigation.navigate("Home")
+  }
+
   loginPressed = value => {
     fetch(`https://hackuci19-231913.appspot.com/graphql?query={user(email: "${this.state.email}"){password}}`)
     .then(data => data.json())
     .then(data => 
       {
-        data.data.user ? data.data.user.password === this.state.password ? this.props.navigation.navigate("Home") : this.incorrectInput() :  this.incorrectInput() 
+        data.data.user ? data.data.user.password === this.state.password ? this.loginSuccessful() : this.incorrectInput() :  this.incorrectInput() 
       }
     )
     .done()
@@ -46,8 +53,8 @@ export default class LoginView extends Component {
 
   render() {
     return (
-      
       <View style={styles.container}>
+        <StatusBar hidden/>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
           <TextInput style={styles.inputs}
