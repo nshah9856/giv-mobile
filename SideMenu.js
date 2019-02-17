@@ -4,21 +4,6 @@ import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, StyleSheet, Linking } from 'react-native';
 import {Button} from 'react-native-elements';
 
-import Communications from 'react-native-communications'
-
-const styles = StyleSheet.create({
-    container: {
-      paddingTop: 20,
-      flex: 1
-    },
-    navItemStyle: {
-      padding: 15,
-      textAlign: 'center',
-      fontSize: 16,
-    },
-  }
-);
-
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
     const navigateAction = NavigationActions.navigate({

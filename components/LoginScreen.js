@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
+import { Icon } from 'react-native-elements';
 
 import {
   StyleSheet,
@@ -67,10 +68,15 @@ export default class LoginView extends Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden/>
+        <Image source={require('../assets/sharity-small.png')}/>
         <View style={styles.inputContainer}>
-          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+          <Icon
+            name='email'
+            color='black'
+          />
           <TextInput style={styles.inputs}
               placeholder="Email"
+              placeholderTextColor='black'
               keyboardType="email-address"
               underlineColorAndroid='transparent'
               onChangeText={(email) => this.setState({email})}
@@ -78,9 +84,13 @@ export default class LoginView extends Component {
         </View>
         
         <View style={styles.inputContainer}>
-          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+          <Icon
+              name='keyboard'
+              color='black'
+          />
           <TextInput style={styles.inputs}
               placeholder="Password"
+              placeholderTextColor='black'
               secureTextEntry={true}
               underlineColorAndroid='transparent'
               onChangeText={(password) => this.setState({password})}/>
@@ -107,11 +117,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#b1fcbe',
   },
   inputContainer: {
       borderBottomColor: '#000000',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#transparent',
       borderRadius:30,
       borderBottomWidth: 1,
       width:250,
@@ -138,13 +148,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom:20,
+    color: 'black',
     width:250,
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "#00b5ec",
+    backgroundColor: "white",
   },
   loginText: {
-    color: 'white',
+    color: 'black',
   }
 });
