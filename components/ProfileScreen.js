@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, ScrollView } from 'react-native';
 import { Icon, Card} from 'react-native-elements'
+import HyperLink from 'react-native-hyperlink';
 
 const RenderData = props => (
   <View>
@@ -58,14 +59,11 @@ class ProfileScreen extends React.Component {
       else{
         var i = 0;
         return(
-           <ScrollView contentContainerStyle={{padding:0, margin:0}} borderRadius={25} border="0" showsVerticalScrollIndicator={false}> 
+           <ScrollView contentContainerStyle={{padding:10, margin:10}}> 
             { this.state.data !== null && 
               this.state.data.map(element =>
               element.likedOrgs.map(val =>
-                <Card
-                    title={<Text>{val}</Text>}
-                    key = {i++}
-                />
+                  <HyperLink style={{padding: 10}} linkDefault={ true } linkStyle={ { color: '#2980b9'}}><Text>{val}</Text></HyperLink>
                 ))
             } 
           </ScrollView>

@@ -29,35 +29,23 @@ class SideMenu extends Component {
                   flex: 1,
                   flexDirection: 'column',
                   justifyContent: 'center',
-                  alignItems: 'left',
+                  alignItems: 'flex-start',
                 }}>
-          <Button
-            icon={
-              <Icon
-                name="person"
-                size={20}
-                color="black"
-              />
-            }
-            iconLeft
-            title=" Profile"
-            type="clear"
-            titleStyle={styles.button}
-          />
 
           <Button
             icon={
               <Icon
-                name='heartbeat'
+                name='home'
                 type='font-awesome'
                 size={20}
                 color="black"
               />
             }
             iconLeft
-            title=" Your Favorites"
+            title=" Home"
             type="clear"
             titleStyle={styles.button}
+            onPress={() => this.props.navigation.navigate('Home')}
           />
             
 
@@ -73,6 +61,7 @@ class SideMenu extends Component {
             title=" Payment"
             type="clear"
             titleStyle={styles.button}
+            onPress={() => this.props.navigation.navigate('Payments')}
           />
 
           <Button
@@ -102,6 +91,7 @@ class SideMenu extends Component {
             type="clear"
             color="black"
             titleStyle={styles.button}
+            onPress={() => Linking.openURL('mailto:support@sharity.com?subject=Sharity')}
           />
           </View>
         </ScrollView>

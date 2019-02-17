@@ -12,6 +12,7 @@ import {
 
 import { Icon } from 'react-native-elements';
 
+
 export default class RegisterScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'settings',
@@ -34,6 +35,25 @@ export default class RegisterScreen extends Component {
 
   accountCreated = () => {
     Alert.alert("Success", 'Account is created!')
+
+    fetch('https://api.sendgrid.com/v3/mail/send/', {
+      method: 'POST',
+      headers: {
+        'Authorization' : 'Bearer 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',
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify({
+        personalizations: [{
+          "to"      : [{"email":"havenmking@outlook.com"}]}],
+          "from"    : {"email":"test@example.com"},
+          "subject" : "Sending with Sendgrid is fun!",
+          "content" : [{"type": "text/plain", "value": "and easy to do anywhere, even with cURL"}]
+      })
+    });
+
+    console.log("Email should have been sent.")
+
     this.props.navigation.navigate("Login")
   }
 

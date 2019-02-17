@@ -213,7 +213,8 @@ class HomeScreen extends React.Component {
                     >
                         <Icon
                             raised
-                            name='person'
+                            name='heartbeat'
+                            type='font-awesome'
                             color='#b1fcbe'
                             style={styles.FloatingButtonStyle}
                         />
