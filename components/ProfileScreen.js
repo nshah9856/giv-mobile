@@ -5,7 +5,6 @@ import { Icon } from 'react-native-elements'
 class ProfileScreen extends React.Component {
   static navigationOptions = {
     drawerLabel: 'settings',
-    drawerLockMode: 'locked-closed',
     drawerIcon: ({ tintColor }) => (
       <Icon
         name='settings'

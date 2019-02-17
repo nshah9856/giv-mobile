@@ -10,6 +10,8 @@ import {
   Alert
 } from 'react-native';
 
+import { Icon } from 'react-native-elements';
+
 export default class RegisterScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'settings',
@@ -54,32 +56,40 @@ export default class RegisterScreen extends Component {
 
   render() {
     return (
-      
       <View style={styles.container}>
         <View style={styles.inputContainer}>
-          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/message/ultraviolet/50/3498db'}}/>
+          <Icon
+            name='email'
+            color='black'
+          />
           <TextInput style={styles.inputs}
-              placeholder="Email"
-              keyboardType="email-address"
-              underlineColorAndroid='transparent'
-              onChangeText={(email) => this.setState({email})}
-            />
+            placeholder="Email"
+            placeholderTextColor='black'
+            keyboardType="email-address"
+            underlineColorAndroid='transparent'
+            onChangeText={(email) => this.setState({email})}
+          />
         </View>
-        
+
         <View style={styles.inputContainer}>
-          <Image style={styles.inputIcon} source={{uri: 'https://png.icons8.com/key-2/ultraviolet/50/3498db'}}/>
+          <Icon
+            name='keyboard'
+            color='black'
+          />
           <TextInput style={styles.inputs}
-              placeholder="Password"
-              secureTextEntry={true}
-              underlineColorAndroid='transparent'
-              onChangeText={(password) => this.setState({password})}/>
+            placeholder="Password"
+            placeholderTextColor='black'
+            secureTextEntry={true}
+            underlineColorAndroid='transparent'
+            onChangeText={(password) => this.setState({password})}
+          />
         </View>
 
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.submitPressed}>
-          <Text style={styles.loginText}>Submit</Text>
-        </TouchableHighlight>
+          <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={this.submitPressed}>
+            <Text style={styles.loginText}>Submit</Text>
+          </TouchableHighlight>
 
-      </View>
+        </View>
     );
   }
 }
@@ -89,11 +99,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#b1fcbe',
   },
   inputContainer: {
       borderBottomColor: '#000000',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#transparent',
       borderRadius:30,
       borderBottomWidth: 1,
       width:250,
@@ -120,13 +130,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom:20,
+    color: 'black',
     width:250,
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "#00b5ec",
+    backgroundColor: "white",
   },
   loginText: {
-    color: 'white',
+    color: 'black',
   }
 });
