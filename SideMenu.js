@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View, StyleSheet, Linking } from 'react-native';
-import {Button} from 'react-native-elements';
+import {ScrollView, Text, View, StyleSheet, Linking, Image } from 'react-native';
+import {Button, Icon} from 'react-native-elements';
 
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -14,42 +14,15 @@ class SideMenu extends Component {
 
   render () {
     return (
-      <View >
-        <View style={{borderBottomColor: "grey", borderBottomWidth: 1}}>
-          <Text style={{padding: 20, textAlign: 'center', fontSize: 36, color: "#9cd585"}}>sharity</Text>
-        </View>
+      <View alignItems='center' justifyItems='flex-start'>
+        {/* <View alignItems='center'> */}
+          <Image resizeMethod='scale' style={{scaleX:0.5, scaleY:0.5}} source={require('./assets/sharity-small-green.png')}/>
+        {/* </View>   */}
         <ScrollView>
-          <View>
-              <Button
-                title="home"
-                type="clear"
-                onPress={() => this.props.navigation.navigate("Home")}
-              />
-
-              <Button
-                title="profile"
-                type="clear"
-                onPress={() => this.props.navigation.navigate("Profile")}
-              />
-
-              <Button
-                title="payment information"
-                type="clear"
-                onPress={() => this.props.navigation.navigate("Payments")}
-              />
-
-              <Button
-                title="contact"
-                type="clear"
-                onPress={() => Linking.openURL('mailto:support@sharity.com?subject=Sharity')}
-              />
-
-              <Button
-                title="delete account"
-                type="clear"
-               onPress={() => this.props.navigation.navigate("Home")}
-              />
-          </View>
+          <View style={{flexDirection: 'row'}} justifyItems='flex-start'><Icon name='menu'/><Text style={styles.button}>home</Text></View>
+          <Text style={styles.button}>payment information</Text>
+          <Text style={styles.button}>contact us</Text>
+          <Text style={styles.button}>delete account</Text>
         </ScrollView>
       </View>
     );
@@ -61,3 +34,11 @@ SideMenu.propTypes = {
 };
 
 export default SideMenu;
+
+const styles = StyleSheet.create({
+  button: {
+    color: 'black',
+    padding: 10,
+    textAlign: 'left'
+  },
+});

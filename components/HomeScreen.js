@@ -239,8 +239,8 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        left: 15,
-        top: 15,
+        left: 3,
+        top: 3,
     },
     TouchableOpacityStyleRight: {
         position: 'absolute',
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
         height: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        left: 15,
+        left: 3,
         top: 80,
     },
     FloatingButtonStyle: {

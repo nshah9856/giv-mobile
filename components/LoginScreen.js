@@ -67,7 +67,7 @@ export default class LoginView extends Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden/>
-        <Image source={require('../assets/sharity-small.png')}/>
+        <Image resizeMethod='scale' style={{scaleX: 0.75, scaleY: 0.75}} source={require('../assets/sharity-small-green.png')}/>
         <View style={styles.inputContainer}>
           <Icon
             name='email'
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#b1fcbe',
+    backgroundColor: 'white',
   },
   inputContainer: {
       borderBottomColor: '#000000',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "white",
+    backgroundColor: "#b1fcbe",
   },
   loginText: {
     color: 'black',

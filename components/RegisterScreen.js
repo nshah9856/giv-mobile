@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#b1fcbe',
+    backgroundColor: 'white',
   },
   inputContainer: {
       borderBottomColor: '#000000',
@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom:20,
-    color: 'black',
+    // color: 'black',
     width:250,
     borderRadius:30,
   },
   loginButton: {
-    backgroundColor: "white",
+    backgroundColor: "#b1fcbe",
   },
   loginText: {
     color: 'black',
