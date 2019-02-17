@@ -201,7 +201,7 @@ class HomeScreen extends React.Component {
                         <Icon
                             raised
                             name='menu'
-                            color='#9cd585'
+                            color='#b1fcbe'
                             style={styles.FloatingButtonStyle}
                         />
                     </TouchableOpacity>
@@ -214,7 +214,7 @@ class HomeScreen extends React.Component {
                         <Icon
                             raised
                             name='person'
-                            color='#9cd585'
+                            color='#b1fcbe'
                             style={styles.FloatingButtonStyle}
                         />
                     </TouchableOpacity>

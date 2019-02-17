@@ -67,7 +67,7 @@ export default class LoginView extends Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden/>
-        <Image resizeMethod='scale' style={{scaleX: 0.75, scaleY: 0.75}} source={require('../assets/sharity-small-green.png')}/>
+        <Image resizeMode='contain' style={{width:"65%"}} source={require('../assets/sharity-small-green.png')}/>
         <View style={styles.inputContainer}>
           <Icon
             name='email'
