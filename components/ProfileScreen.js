@@ -46,6 +46,21 @@ class ProfileScreen extends React.Component {
       )
   }
 
+  componentDidUpdate(prevProps) {
+    fetch('https://hackuci19-231913.appspot.com/graphql?query={users{email likedOrgs}}')
+    .then(data => 
+        data.json())
+    .then(data => {
+        if (data.data){
+          var newData = data.data.users.filter(({email}) => email === this.email)
+
+          if (this.state.data.length >= newData.length)
+            this.setState({data: newData, loading:false})
+        }
+      }
+    )
+  }
+  
   render() {
       if (this.state.loading === true){
         return(
@@ -63,7 +78,7 @@ class ProfileScreen extends React.Component {
             { this.state.data !== null && 
               this.state.data.map(element =>
               element.likedOrgs.map(val =>
-                  <HyperLink style={{padding: 10}} linkDefault={ true } linkStyle={ { color: '#2980b9'}}><Text>{val}</Text></HyperLink>
+                  <HyperLink style={{padding: 10}} key={i++} linkDefault={ true } linkStyle={ { color: '#2980b9'}}><Text>{val}</Text></HyperLink>
                 ))
             } 
           </ScrollView>

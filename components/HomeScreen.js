@@ -76,9 +76,9 @@ class CardComponent extends React.Component{
                     <Video
                         source={{ uri: this.props.VideoURL }}
                         shouldPlay
-                        resizeMode="cover"
+                        resizeMode={Video.RESIZE_MODE_STRETCH}
                         volume={0.0}
-                        style={{ width, height:500, flex:1 }}
+                        style={{ width, height:500}}
                         isLooping
                     />
                     <Text style={styles.item}>{this.props.title}</Text>
