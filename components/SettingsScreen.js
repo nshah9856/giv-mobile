@@ -21,6 +21,7 @@ const buttons = [
 class SettingsScreen extends React.Component {
     static navigationOptions = {
         drawerLabel: 'settings',
+        drawerLockMode: 'locked-closed',
         drawerIcon: ({ tintColor }) => (
           <Icon
             name='settings'

@@ -54,50 +54,50 @@ class CardComponent extends React.Component{
 
     render(){
     return (
-    <View style={{padding: 25, backgroundColor:'#ffffff'}}>
-    <Card contentContainerStyle={{padding:0, margin:0}} containerStyle={{padding:0, margin: 0, borderColor:'#ffffff'}}  borderRadius={25} height="100%">
-        <ScrollView contentContainerStyle={{padding:0, margin:0}} borderRadius={25} border="0" showsVerticalScrollIndicator={false}  bounces={false}> 
-            <Video
-                source={{ uri: this.props.VideoURL }}
-                shouldPlay
-                resizeMode="cover"
-                volume={0.0}
-                style={{ width, height:500, flex:1 }}
-                isLooping
-            />
-            <Text style={styles.item}>{this.props.title}</Text>
-            <Text style={{ padding: 15, fontSize: 20, color: 'black',}}>{this.props.description}</Text>
-            <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
-                <Icon
-                    name='share'
-                    color={this.state.shareColor}
-                    size={40}
-                    onPress={this.handleSharePress}
-                />
-
-                <Animatable.View ref={(ref) => this.moneyView = ref} animation="pulse" easing="linear" iterationCount="infinite" >
-                    <Icon
-                        name='monetization-on'
-                        color={this.state.moneyColor}
-                        size={40}
-                        reverse
-                        onPress={this.moneyPressed}
+        <View style={{padding: 25, backgroundColor:'#ffffff'}}>
+            <Card contentContainerStyle={{padding:0, margin:0}} containerStyle={{padding:0, margin: 0, borderColor:'#ffffff'}}  borderRadius={25} height="100%">
+                <ScrollView contentContainerStyle={{padding:0, margin:0}} borderRadius={25} border="0" showsVerticalScrollIndicator={false}  bounces={false}> 
+                    <Video
+                        source={{ uri: this.props.VideoURL }}
+                        shouldPlay
+                        resizeMode="cover"
+                        volume={0.0}
+                        style={{ width, height:500, flex:1 }}
+                        isLooping
                     />
-                </Animatable.View>
+                    <Text style={styles.item}>{this.props.title}</Text>
+                    <Text style={{ padding: 15, fontSize: 20, color: 'black',}}>{this.props.description}</Text>
+                    <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                        <Icon
+                            name='share'
+                            color={this.state.shareColor}
+                            size={40}
+                            onPress={this.handleSharePress}
+                        />
 
-                <Animatable.View ref={this.handleViewRef}>
-                <Icon
-                    name='favorite'
-                    color={this.state.heartColor}
-                    size={40}
-                    onPress={this.handleHeartPress}
-                />
-                </Animatable.View>
-            </View>
-        </ScrollView> 
-    </Card>
-    </View>
-)}
+                        <Animatable.View ref={(ref) => this.moneyView = ref} animation="pulse" easing="linear" iterationCount="infinite" >
+                            <Icon
+                                name='monetization-on'
+                                color={this.state.moneyColor}
+                                size={40}
+                                reverse
+                                onPress={this.moneyPressed}
+                            />
+                        </Animatable.View>
+
+                        <Animatable.View ref={this.handleViewRef}>
+                        <Icon
+                            name='favorite'
+                            color={this.state.heartColor}
+                            size={40}
+                            onPress={this.handleHeartPress}
+                        />
+                        </Animatable.View>
+                    </View>
+                </ScrollView> 
+            </Card>
+        </View>
+        )}
     }
 
 class DisplayData extends React.Component {

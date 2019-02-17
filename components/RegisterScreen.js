@@ -11,7 +11,16 @@ import {
 } from 'react-native';
 
 export default class RegisterScreen extends Component {
-
+  static navigationOptions = {
+    drawerLabel: 'settings',
+    drawerLockMode: 'locked-closed',
+    drawerIcon: ({ tintColor }) => (
+      <Icon
+        name='settings'
+        color='black'
+      />
+    ),
+  };
   constructor(props) {
     super(props);
     state = {
