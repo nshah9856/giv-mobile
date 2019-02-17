@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, StatusBar, Dimensions, ScrollView, Text, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, StatusBar, Dimensions, ScrollView, Text, TouchableOpacity, Share} from 'react-native';
 import { Icon, Card} from 'react-native-elements'
 import Swiper from 'react-native-animated-swiper'
 import {Video} from 'expo'
@@ -12,8 +12,35 @@ class CardComponent extends React.Component{
         super(props)
         this.state={heartColor:'black', moneyColor:'black', shareColor: 'black'}
     }
+
+    onShare = async () => {
+        try {
+          const result = await Share.share({
+            url:
+              this.props.website
+          })
+    
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+              // shared with activity type of result.activityType
+            } else {
+              // shared
+            }
+          } else if (result.action === Share.dismissedAction) {
+            // dismissed
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+      };
+
     handleViewRef = ref => this.view = ref;
   
+    handleSharePress = () => {
+        this.setState({shareColor:'#59c3c3'})
+        this.onShare()
+    }
+
     moneyPressed = () => {
         this.setState({moneyColor:'#b1fcbe'})
         this.moneyView.wobble()
@@ -45,7 +72,7 @@ class CardComponent extends React.Component{
                     name='share'
                     color={this.state.shareColor}
                     size={40}
-                    onPress={() => this.setState({shareColor:'#59c3c3'})}
+                    onPress={this.handleSharePress}
                 />
 
                 <Animatable.View ref={(ref) => this.moneyView = ref} animation="pulse" easing="linear" iterationCount="infinite" >
@@ -91,7 +118,7 @@ class DisplayData extends React.Component {
     }
 
     fetchData(){
-        return fetch('https://hackuci19-231913.appspot.com/graphql?query={organizations{title url description}}')
+        return fetch('https://hackuci19-231913.appspot.com/graphql?query={organizations{title url description website}}')
     }
     render(){
         if (this.state.loading === true){
@@ -107,11 +134,12 @@ class DisplayData extends React.Component {
         return(
             <Swiper>
                 {
-                    this.state.data.map(({title,url, description}) => {
+                    this.state.data.map(({title,url, description, website}) => {
                     return <CardComponent 
                         VideoURL={url}
                         title={<Text style={styles.item}>{title}</Text>}
                         description={<Text>{description}</Text>}
+                        website = {website}
                         key = {1}
                     />
                     })
