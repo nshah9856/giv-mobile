@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
+import HomeScreen from './HomeScreen'
 
 import {
   StyleSheet,
@@ -12,18 +13,16 @@ import {
   Alert
 } from 'react-native';
 
-export var USER_LOGGED_IN = null
-
 export default class LoginView extends Component {
   static navigationOptions = {
-    drawerLabel: 'settings',
+    // drawerLabel: 'settings',
     drawerLockMode: 'locked-closed',
-    drawerIcon: ({ tintColor }) => (
-      <Icon
-        name='settings'
-        color='black'
-      />
-    ),
+    // drawerIcon: ({ tintColor }) => (
+    //   <Icon
+    //     name='settings'
+    //     color='black'
+    //   />
+    // ),
   };
   constructor(props) {
     super(props);
@@ -48,8 +47,7 @@ export default class LoginView extends Component {
 
   loginSuccessful = () => {
     global.menu_available = true
-    USER_LOGGED_IN = this.state.email
-    this.props.navigation.navigate("Home")
+    this.props.navigation.navigate("Home", {USER_EMAIL : this.state.email})
   }
 
   loginPressed = value => {

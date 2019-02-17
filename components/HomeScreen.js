@@ -11,6 +11,7 @@ class CardComponent extends React.Component{
     constructor(props){
         super(props)
         this.state={heartColor:'black', moneyColor:'black', shareColor: 'black'}
+        this.user_email = props.user_email
     }
 
     onShare = async () => {
@@ -50,6 +51,21 @@ class CardComponent extends React.Component{
     handleHeartPress = () => {
         this.setState({heartColor:"#e75a7c"})
         this.view.bounce()
+        ///Mutation here!
+        fetch(`https://hackuci19-231913.appspot.com/graphql?query=mutation{
+            updateUserOrgs(email:"${this.user_email}", tempOrg:"${this.props.website}"){
+                tempOrg
+                email
+            }
+          }`, {method: 'POST'})
+        .then(data => data.json())
+        .then(data => 
+          {
+            console.log(data)
+            // data.data.updateUserOrgs ? data.data.updateUserOrgs.email && data.data.updateUserOrgs.tempOrg ? continue : Alert.alert("Error", "Please input the elements") :  Alert.alert("Error", "Please input the elements") 
+          }
+        )
+        .done()
     }
 
     render(){
@@ -140,6 +156,7 @@ class DisplayData extends React.Component {
                         title={<Text style={styles.item}>{title}</Text>}
                         description={<Text>{description}</Text>}
                         website = {website}
+                        user_email = {this.props.user_email}
                         key = {1}
                     />
                     })
@@ -166,9 +183,10 @@ class HomeScreen extends React.Component {
     }
 
     render() {
+        const { navigation } = this.props;
         return (
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <DisplayData />
+                    <DisplayData user_email={navigation.getParam('USER_EMAIL')}/>
 
                     <TouchableOpacity
                         activeOpacity={0.7}
