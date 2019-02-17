@@ -3,26 +3,75 @@ import { StyleSheet, View, StatusBar, Dimensions, ScrollView, Text, TouchableOpa
 import { Icon, Card} from 'react-native-elements'
 import Swiper from 'react-native-animated-swiper'
 import {Video} from 'expo'
+import * as Animatable from 'react-native-animatable';
 
 const { width } = Dimensions.get('window')
 
-const CardComponent = props => (
+class CardComponent extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={heartColor:'black', moneyColor:'black', shareColor: 'black'}
+    }
+    handleViewRef = ref => this.view = ref;
+  
+    moneyPressed = () => {
+        this.setState({moneyColor:'#b1fcbe'})
+        this.moneyView.wobble()
+        this.moneyView.stopAnimation()
+    }
+
+    handleHeartPress = () => {
+        this.setState({heartColor:"#e75a7c"})
+        this.view.bounce()
+    }
+
+    render(){
+    return (
     <View style={{padding: 25, backgroundColor:'#ffffff'}}>
     <Card contentContainerStyle={{padding:0, margin:0}} containerStyle={{padding:0, margin: 0, borderColor:'#ffffff'}}  borderRadius={25} height="100%">
-        <ScrollView contentContainerStyle={{padding:0, margin:0}} borderRadius={25} border="0" showsVerticalScrollIndicator={false} bounces={false}> 
+        <ScrollView contentContainerStyle={{padding:0, margin:0}} borderRadius={25} border="0" showsVerticalScrollIndicator={false}  bounces={false}> 
             <Video
-                source={{ uri: props.VideoURL }}
+                source={{ uri: this.props.VideoURL }}
                 shouldPlay
                 resizeMode="cover"
                 volume={0.0}
                 style={{ width, height:500, flex:1 }}
                 isLooping
             />
-            <Text style={styles.item}>{props.title}</Text>
+            <Text style={styles.item}>{this.props.title}</Text>
+            <Text style={{ padding: 15, fontSize: 20, color: 'black',}}>{this.props.description}</Text>
+            <View style={{flexDirection:'row', justifyContent:'space-around', alignItems:'center'}}>
+                <Icon
+                    name='share'
+                    color={this.state.shareColor}
+                    size={40}
+                    onPress={() => this.setState({shareColor:'#59c3c3'})}
+                />
+
+                <Animatable.View ref={(ref) => this.moneyView = ref} animation="pulse" easing="linear" iterationCount="infinite" >
+                    <Icon
+                        name='monetization-on'
+                        color={this.state.moneyColor}
+                        size={40}
+                        reverse
+                        onPress={this.moneyPressed}
+                    />
+                </Animatable.View>
+
+                <Animatable.View ref={this.handleViewRef}>
+                <Icon
+                    name='favorite'
+                    color={this.state.heartColor}
+                    size={40}
+                    onPress={this.handleHeartPress}
+                />
+                </Animatable.View>
+            </View>
         </ScrollView> 
     </Card>
     </View>
-)
+)}
+    }
 
 class DisplayData extends React.Component {
 
@@ -42,7 +91,7 @@ class DisplayData extends React.Component {
     }
 
     fetchData(){
-        return fetch('https://hackuci19-231913.appspot.com/graphql?query={organizations{title url}}')
+        return fetch('https://hackuci19-231913.appspot.com/graphql?query={organizations{title url description}}')
     }
     render(){
         if (this.state.loading === true){
@@ -58,10 +107,11 @@ class DisplayData extends React.Component {
         return(
             <Swiper>
                 {
-                    this.state.data.map(({title,url}) => {
+                    this.state.data.map(({title,url, description}) => {
                     return <CardComponent 
                         VideoURL={url}
                         title={<Text style={styles.item}>{title}</Text>}
+                        description={<Text>{description}</Text>}
                         key = {1}
                     />
                     })
