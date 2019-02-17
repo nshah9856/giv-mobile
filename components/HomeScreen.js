@@ -10,7 +10,7 @@ const { width } = Dimensions.get('window')
 class CardComponent extends React.Component{
     constructor(props){
         super(props)
-        this.state={heartColor:'black', moneyColor:'black', shareColor: 'black'}
+        this.state={heartColor:'black', moneyColor:'#b1fcbe', shareColor: 'black', iterationCount: null}
         this.user_email = props.user_email
     }
 
@@ -43,9 +43,10 @@ class CardComponent extends React.Component{
     }
 
     moneyPressed = () => {
-        this.setState({moneyColor:'#b1fcbe'})
-        this.moneyView.wobble()
+        this.setState({iterationCount:1})
         this.moneyView.stopAnimation()
+        this.moneyView.bounceIn()
+        // this.moneyView.props.iterationCount = 1
     }
 
     handleHeartPress = () => {
@@ -76,7 +77,7 @@ class CardComponent extends React.Component{
                     <Video
                         source={{ uri: this.props.VideoURL }}
                         shouldPlay
-                        resizeMode={Video.RESIZE_MODE_STRETCH}
+                        resizeMode={Video.RESIZE_MODE_COVER}
                         volume={0.0}
                         style={{ width, height:500}}
                         isLooping
@@ -91,7 +92,7 @@ class CardComponent extends React.Component{
                             onPress={this.handleSharePress}
                         />
 
-                        <Animatable.View ref={(ref) => this.moneyView = ref} animation="pulse" easing="linear" iterationCount="infinite" >
+                        <Animatable.View ref={(ref) => this.moneyView = ref} animation="pulse" easing="linear" iterationCount={this.state.iterationCount ? this.state.iterationCount: 'infinite'} >
                             <Icon
                                 name='monetization-on'
                                 color={this.state.moneyColor}
@@ -148,7 +149,7 @@ class DisplayData extends React.Component {
         }
         else{
         return(
-            <Swiper>
+            <Swiper containerStyle={{backgroundColor:"black"}}>
                 {
                     this.state.data.map(({title,url, description, website}) => {
                     return <CardComponent 
@@ -190,7 +191,7 @@ class HomeScreen extends React.Component {
     render() {
         const { navigation } = this.props;
         return (
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
                     <DisplayData user_email={navigation.getParam('USER_EMAIL')}/>
 
                     <TouchableOpacity
