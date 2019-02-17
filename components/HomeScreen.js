@@ -178,7 +178,12 @@ class HomeScreen extends React.Component {
         ),
       };
 
+    profileHandler = () => {
+        this.props.navigation.navigate('Profile', {user_email: this.props.navigation.getParam('USER_EMAIL')})
+    }
+
     clickHandler = () => {
+        // this.props.navigation.setParams({user_email: this.props.navigation.getParam('USER_EMAIL')})
         this.props.navigation.openDrawer();
     }
 
@@ -200,6 +205,20 @@ class HomeScreen extends React.Component {
                             style={styles.FloatingButtonStyle}
                         />
                     </TouchableOpacity>
+
+                    <TouchableOpacity
+                        activeOpacity={0.7}
+                        onPress={this.profileHandler}
+                        style={styles.TouchableOpacityStyleRight}
+                    >
+                        <Icon
+                            raised
+                            name='person'
+                            color='#9cd585'
+                            style={styles.FloatingButtonStyle}
+                        />
+                    </TouchableOpacity>
+
                 </View>
         );
     }
@@ -222,6 +241,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         left: 15,
         top: 15,
+    },
+    TouchableOpacityStyleRight: {
+        position: 'absolute',
+        width: 50,
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        left: 15,
+        top: 80,
     },
     FloatingButtonStyle: {
         resizeMode: 'contain',
