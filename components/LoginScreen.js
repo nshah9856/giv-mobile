@@ -12,8 +12,19 @@ import {
   Alert
 } from 'react-native';
 
-export default class LoginView extends Component {
+export var USER_LOGGED_IN = null
 
+export default class LoginView extends Component {
+  static navigationOptions = {
+    drawerLabel: 'settings',
+    drawerLockMode: 'locked-closed',
+    drawerIcon: ({ tintColor }) => (
+      <Icon
+        name='settings'
+        color='black'
+      />
+    ),
+  };
   constructor(props) {
     super(props);
     state = {
@@ -37,6 +48,7 @@ export default class LoginView extends Component {
 
   loginSuccessful = () => {
     global.menu_available = true
+    USER_LOGGED_IN = this.state.email
     this.props.navigation.navigate("Home")
   }
 

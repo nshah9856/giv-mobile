@@ -3,15 +3,16 @@ import { View } from 'react-native';
 import { Icon } from 'react-native-elements'
 
 class ProfileScreen extends React.Component {
-    static navigationOptions = {
-        drawerLabel: 'profile',
-        drawerIcon: ({ tintColor }) => (
-          <Icon
-            name='person'
-            color='black'
-          />
-        ),
-      };
+  static navigationOptions = {
+    drawerLabel: 'settings',
+    drawerLockMode: 'locked-closed',
+    drawerIcon: ({ tintColor }) => (
+      <Icon
+        name='settings'
+        color='black'
+      />
+    ),
+  };
 
     render() {
         const {navigate} = this.props.navigation;

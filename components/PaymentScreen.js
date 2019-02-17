@@ -2,6 +2,16 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
 
 class PaymentScreen extends React.Component {
+    static navigationOptions = {
+        drawerLabel: 'settings',
+        drawerLockMode: 'locked-closed',
+        drawerIcon: ({ tintColor }) => (
+          <Icon
+            name='settings'
+            color='black'
+          />
+        ),
+      };
     static navigationOptions = ({navigation}) => {
         return {
             title: '',
