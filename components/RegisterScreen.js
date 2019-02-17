@@ -38,20 +38,24 @@ export default class RegisterScreen extends Component {
   }
 
   submitPressed = value => {
-    fetch(`https://hackuci19-231913.appspot.com/graphql?query=mutation{
-        createUser(email:"${this.state.email}", password:"${this.state.password}"){
-          email
-          password
+    try {
+      fetch(`https://hackuci19-231913.appspot.com/graphql?query=mutation{
+          createUser(email:"${this.state.email}", password:"${this.state.password}"){
+            email
+            password
+          }
+        }`, {method: 'POST'})
+      .then(data => data.json())
+      .then(data => 
+        {
+          console.log(data)
+          data.data.createUser ? data.data.createUser.email && data.data.createUser.password ? this.accountCreated() : Alert.alert("Error", "Please input the elements") :  Alert.alert("Error", "Please input the elements") 
         }
-      }`, {method: 'POST'})
-    .then(data => data.json())
-    .then(data => 
-      {
-        console.log(data)
-        data.data.createUser ? data.data.createUser.email && data.data.createUser.password ? this.accountCreated() : Alert.alert("Error", "Please input the elements") :  Alert.alert("Error", "Please input the elements") 
-      }
-    )
-    .done()
+      )
+      .done()
+    } catch (error1) {
+      Alert.alert("Alert", "Please enter an email and password");
+    }
   }
 
   render() {

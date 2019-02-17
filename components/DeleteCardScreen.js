@@ -24,13 +24,13 @@ class SettingsScreen extends React.Component {
 const styles = StyleSheet.create({
     item: {
         padding: 15,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         color: 'black',
     },
     red: {
         padding: 15,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         color: 'red',
     },
