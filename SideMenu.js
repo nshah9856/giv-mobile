@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
 import {ScrollView, Text, View, StyleSheet, Linking, Image } from 'react-native';
-import {Button, Icon} from 'react-native-elements';
+import {Button, Icon, ListItem } from 'react-native-elements';
+
+
+
 
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -12,6 +15,9 @@ class SideMenu extends Component {
     this.props.navigation.dispatch(navigateAction);
   }
 
+
+  
+
   render () {
     return (
       <View alignItems='flex-start' justifyItems='flex-start' style={{padding:15}}>
@@ -19,10 +25,86 @@ class SideMenu extends Component {
         <Image resizeMode='contain' style={{width:"65%"}} source={require('./assets/sharity-small-green.png')}/>
         {/* </View>   */}
         <ScrollView>
-          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='home'/><Text style={styles.button}>home</Text></View>
-          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='person'/><Text style={styles.button}>profile</Text></View>
-          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='message'/><Text style={styles.button}>contact us</Text></View>
-          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='home'/><Text style={styles.button}>home</Text></View>
+         <View style={{
+                  flex: 1,
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'left',
+                }}>
+          <Button
+            icon={
+              <Icon
+                name="person"
+                size={20}
+                color="black"
+              />
+            }
+            iconLeft
+            title=" Profile"
+            type="clear"
+            titleStyle={styles.button}
+          />
+
+          <Button
+            icon={
+              <Icon
+                name="person"
+                size={20}
+                color="black"
+              />
+            }
+            iconLeft
+            title=" Your Donations"
+            type="clear"
+            name='heartbeat'
+            type='font-awesome'
+            titleStyle={styles.button}
+          />
+            
+
+          <Button
+            icon={
+              <Icon
+                name="payment"
+                size={20}
+                color="black"
+              />
+            }
+            iconLeft
+            title=" Payment"
+            type="clear"
+            titleStyle={styles.button}
+          />
+
+          <Button
+            icon={
+              <Icon
+                name="settings"
+                size={20}
+                color="black"
+              />
+            }
+            iconLeft
+            title=" Settings"
+            type="clear"
+            titleStyle={styles.button}
+          />
+
+          <Button
+            icon={
+              <Icon
+                name="message"
+                size={20}
+                color="black"
+              />
+            }
+            iconLeft
+            title=" Contact"
+            type="clear"
+            color="black"
+            titleStyle={styles.button}
+          />
+          </View>
         </ScrollView>
       </View>
     );
@@ -38,7 +120,7 @@ export default SideMenu;
 const styles = StyleSheet.create({
   button: {
     color: 'black',
-    padding: 20,
+    padding: 15,
     textAlign: 'left'
   },
 });
