@@ -23,9 +23,6 @@ const MyDrawerNavigator = createDrawerNavigator(
     Profile: {
       screen: ProfileScreen,
     },
-    Settings: {
-      screen: SettingsScreen,
-    },
     Payments: {
       screen: PaymentScreen,
     },

@@ -21,7 +21,6 @@ const buttons = [
 class SettingsScreen extends React.Component {
     static navigationOptions = {
         drawerLabel: 'settings',
-        drawerLockMode: 'locked-closed',
         drawerIcon: ({ tintColor }) => (
           <Icon
             name='settings'
@@ -34,48 +33,41 @@ class SettingsScreen extends React.Component {
         return (
             <View>
                 <Text
-                    style={styles.item}
+                    style={styles.navItemStyle}
                     onPress={() => 
                         this.props.navigation.navigate('Payments')
                     }
                 >
                     payment information
                 </Text>
-                <View style={styles.line}/>
                 <Text
-                    style={styles.item}
+                    style={styles.navItemStyle}
                     onPress={() => 
                         this.props.navigation.navigate('Home')
                     }
                 >
                     delete account
                 </Text>
-                <View style={styles.line}/>
                 <Text
-                    style={styles.item}
+                    style={styles.navItemStyle}
                     onPress={() => 
                         Communications.email(['support@sharity.tech'],null,null,'About Sharity', null)
                     }
                 >
                     contact us
                 </Text>
-                <View style={styles.line}/>
             </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    item: {
-        padding: 15,
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'black',
+    navItemStyle: {
+      padding: 15,
+      textAlign: 'center',
+      fontSize: 16,
     },
-    line: {
-        borderBottomColor: '#dddddd',
-        borderBottomWidth: 1,
-    },
-});
+  }
+);
 
 export default SettingsScreen
