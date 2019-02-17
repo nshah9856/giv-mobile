@@ -1,20 +1,8 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
-import {ScrollView, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
-
-const styles = StyleSheet.create({
-    container: {
-      paddingTop: 20,
-      flex: 1
-    },
-    navItemStyle: {
-      padding: 15,
-      textAlign: 'center',
-      fontSize: 16,
-    },
-  }
-);
+import {ScrollView, Text, View, StyleSheet, Linking } from 'react-native';
+import {Button} from 'react-native-elements';
 
 class SideMenu extends Component {
   navigateToScreen = (route) => () => {
@@ -32,21 +20,35 @@ class SideMenu extends Component {
         </View>
         <ScrollView>
           <View>
-              <TouchableHighlight underlayColor="#dddddd" onPress={this.navigateToScreen('Home')}>
-              <Text style={styles.navItemStyle} >
-              home
-              </Text>
-              </TouchableHighlight>
-              <TouchableHighlight underlayColor="#dddddd" onPress={this.navigateToScreen('Profile')}>
-              <Text style={styles.navItemStyle} >
-              profile
-              </Text>
-              </TouchableHighlight>
-              <TouchableHighlight underlayColor="#dddddd" onPress={this.navigateToScreen('Settings')}>
-              <Text style={styles.navItemStyle} >
-              settings
-              </Text>
-              </TouchableHighlight>
+              <Button
+                title="home"
+                type="clear"
+                onPress={() => this.props.navigation.navigate("Home")}
+              />
+
+              <Button
+                title="profile"
+                type="clear"
+                onPress={() => this.props.navigation.navigate("Profile")}
+              />
+
+              <Button
+                title="payment information"
+                type="clear"
+                onPress={() => this.props.navigation.navigate("Payments")}
+              />
+
+              <Button
+                title="contact"
+                type="clear"
+                onPress={() => Linking.openURL('mailto:support@sharity.com?subject=Sharity')}
+              />
+
+              <Button
+                title="delete account"
+                type="clear"
+               onPress={() => this.props.navigation.navigate("Home")}
+              />
           </View>
         </ScrollView>
       </View>
