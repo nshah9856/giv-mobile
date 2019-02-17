@@ -14,15 +14,15 @@ class SideMenu extends Component {
 
   render () {
     return (
-      <View alignItems='center' justifyItems='flex-start'>
+      <View alignItems='flex-start' justifyItems='flex-start' style={{padding:15}}>
         {/* <View alignItems='center'> */}
-          <Image resizeMethod='scale' style={{scaleX:0.5, scaleY:0.5}} source={require('./assets/sharity-small-green.png')}/>
+        <Image resizeMode='contain' style={{width:"65%"}} source={require('./assets/sharity-small-green.png')}/>
         {/* </View>   */}
         <ScrollView>
-          <View style={{flexDirection: 'row'}} justifyItems='flex-start'><Icon name='menu'/><Text style={styles.button}>home</Text></View>
-          <Text style={styles.button}>payment information</Text>
-          <Text style={styles.button}>contact us</Text>
-          <Text style={styles.button}>delete account</Text>
+          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='home'/><Text style={styles.button}>home</Text></View>
+          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='person'/><Text style={styles.button}>profile</Text></View>
+          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='message'/><Text style={styles.button}>contact us</Text></View>
+          <View style={{flexDirection: 'row'}} justifyItems='center' alignItems='center'><Icon name='home'/><Text style={styles.button}>home</Text></View>
         </ScrollView>
       </View>
     );
@@ -38,7 +38,7 @@ export default SideMenu;
 const styles = StyleSheet.create({
   button: {
     color: 'black',
-    padding: 10,
+    padding: 20,
     textAlign: 'left'
   },
 });
