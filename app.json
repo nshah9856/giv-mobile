@@ -12,8 +12,8 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/giv-splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -24,10 +24,6 @@
     ],
     "ios": {
       "supportsTablet": true
-    },
-    "splash": {
-      "image": "./assets/splash.png",
-      "backgroundColor": "#B1FCBE",
-    },
+    }
   }
 }

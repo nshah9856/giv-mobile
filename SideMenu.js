@@ -22,7 +22,7 @@ class SideMenu extends Component {
     return (
       <View alignItems='flex-start' justifyItems='flex-start' style={{padding:15}}>
         {/* <View alignItems='center'> */}
-        <Image resizeMode='contain' style={{width:"65%"}} source={require('./assets/sharity-small-green.png')}/>
+        <Image resizeMode='contain'style={{width:"30%", height:"20%"}} source={require('./assets/giv-small-green.png')}/>
         {/* </View>   */}
         <ScrollView>
          <View style={{
